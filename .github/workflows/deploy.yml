@@ -1,0 +1,86 @@
+name: Deploy Portfolios
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      # -------------------------
+      # Tailwind
+      # -------------------------
+      - name: Install Tailwind dependencies
+        working-directory: tailwind-portfolio
+        run: npm ci
+
+      - name: Build Tailwind
+        working-directory: tailwind-portfolio
+        run: npm run build
+
+      # -------------------------
+      # Bootstrap
+      # -------------------------
+      - name: Install Bootstrap dependencies
+        working-directory: bootstrap-portfolio
+        run: npm ci
+
+      - name: Build Bootstrap
+        working-directory: bootstrap-portfolio
+        run: npm run build
+
+      # -------------------------
+      # Bulma
+      # -------------------------
+      - name: Install Bulma dependencies
+        working-directory: bulma-portfolio
+        run: npm ci
+
+      - name: Build Bulma
+        working-directory: bulma-portfolio
+        run: npm run build
+
+      # -------------------------
+      # Prepare deployment
+      # -------------------------
+      - name: Create deployment folders
+        run: |
+          mkdir -p deployment/tailwind
+          mkdir -p deployment/bootstrap
+          mkdir -p deployment/bulma
+
+          cp -r tailwind-portfolio/dist/* deployment/tailwind/
+          cp -r bootstrap-portfolio/dist/* deployment/bootstrap/
+          cp -r bulma-portfolio/dist/* deployment/bulma/
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./deployment
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
