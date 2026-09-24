@@ -34,7 +34,7 @@ function App() {
           </div>
         </nav>
         <div className="absolute left-6 top-1/2 z-10 -translate-y-1/2 text-left">
-          <p className="mt-8 mb-5 text-xs uppercase tracking-[0.35em] text-gray-400">
+          <p className="mt-10 mb-5 text-xs uppercase tracking-[0.35em] text-gray-400">
             Web Developer
           </p>
 

@@ -4,10 +4,13 @@
   --bg: #0f1216;
   --border: #e5e4e7;
   --accent: #aa3bff;
-
-  font: 18px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
+  font: 18px/145% system-ui, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -32,6 +35,16 @@ body {
   box-sizing: border-box;
 }
 
+.logo-image {
+  margin-left: 8px;
+}
+
+@media (min-width: 576px) {
+  .logo-image {
+    margin-left: 72px;
+  }
+}
+
 .social-icon {
   width: 24px;
   height: 24px;
@@ -41,6 +54,23 @@ body {
 
 .social-icon:hover {
   opacity: 0.6;
+}
+
+.section-icon {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+
+.section-icon:hover {
+  opacity: 0.6;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 .profile-image {
@@ -57,6 +87,7 @@ body {
   line-height: 1;
   font-weight: 300;
 }
+
 .navbar-custom {
   z-index: 20;
 }
@@ -73,6 +104,7 @@ body {
   color: black;
 }
 
-html {
-  scroll-behavior: smooth;
+.about-text {
+  max-width: 672px;
+  color: white;
 }

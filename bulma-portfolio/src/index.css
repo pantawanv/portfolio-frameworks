@@ -4,10 +4,13 @@
   --bg: #0f1216;
   --border: #e5e4e7;
   --accent: #aa3bff;
-
   font: 18px/145% system-ui, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -37,33 +40,33 @@ body {
 }
 
 .portfolio-nav {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 24px;
   left: 0;
   right: 0;
-  margin-top: 24px;
   padding: 0 24px;
-  z-index: 20;
+  z-index: 50;
 }
 
 .logo {
   width: 48px;
   height: 48px;
   object-fit: contain;
+  margin-left: 8px;
 }
 
 .nav-links {
-  gap: 16px;
+  gap: 12px;
 }
 
 .nav-link {
+  color: white;
   text-decoration: none;
 }
 
 .nav-link:hover {
   color: #d1d5db;
 }
-
 
 .hero-content {
   position: absolute;
@@ -80,9 +83,10 @@ body {
 }
 
 .hero-label {
-  margin-bottom: 24px;
-  font-size: 14px;
-  color: #6b7280;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #9ca3af;
 }
 
 .hero-title {
@@ -94,10 +98,9 @@ body {
 }
 
 .hero-description {
-  margin-top: 24px;
+  margin-top: 32px;
   color: white;
 }
-
 
 .project-button {
   margin-right: 8px;
@@ -124,25 +127,23 @@ body {
   color: black;
 }
 
-
 .skills-text {
   margin-top: 40px;
   color: #6b7280;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .skills-text span {
   margin: 0 12px;
 }
 
-
 .social-icons {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 32px;
+  bottom: 32px;
   display: flex;
-  gap: 16px;
-  z-index: 10;
+  gap: 20px;
+  z-index: 20;
 }
 
 .social-icon {
@@ -156,21 +157,57 @@ body {
   opacity: 0.6;
 }
 
+.section-icon {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+
+.section-icon:hover {
+  opacity: 0.6;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.contact-text {
+  vertical-align: middle;
+}
 
 .profile-image {
   position: absolute;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 10;
   width: 45%;
   max-width: 400px;
 }
 
-.projects-section {
+.content-section {
   min-height: 100vh;
-  padding: 80px 40px;
+  padding: 80px 24px;
+  color: white;
 }
 
-html {
-  scroll-behavior: smooth;
+.about-text {
+  width: 100%;
+  max-width: 672px;
+  margin-top: 24px;
+  color: white;
+}
+
+@media (min-width: 576px) {
+  .logo {
+    margin-left: 72px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
 }
