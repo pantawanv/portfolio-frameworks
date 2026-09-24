@@ -165,3 +165,12 @@ body {
   width: 45%;
   max-width: 400px;
 }
+
+.projects-section {
+  min-height: 100vh;
+  padding: 80px 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
